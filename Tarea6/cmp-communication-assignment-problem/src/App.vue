@@ -1,20 +1,17 @@
 <template>
   <header><h1>Tarea 3</h1></header>
-  <section>
-  <div class="row">
-    <div class="column">
-      <header class="formHeader"><h1>Usuarios</h1></header>
-      <active-user
-        v-for="active in actives"
-        :key="active.id"
-        :name="active.name"
-        :age="active.age"
-      >
-      </active-user>
-    </div>
-    <div class="column"><user-data @add-user="addUser"></user-data></div>
+
+  <div class="column">
+    <header class="formHeader"><h1>Usuarios</h1></header>
+    <active-user
+      v-for="active in actives"
+      :key="active.id"
+      :name="active.name"
+      :age="active.age"
+    >
+    </active-user>
   </div>
-  </section>
+  <div class="column"><user-data @add-user="addUser"></user-data></div>
 </template>
 <script>
 import ActiveUser from "./components/ActiveUser.vue";
@@ -90,6 +87,10 @@ header {
   content: "";
   display: table;
   clear: both;
+}
+.divForm {
+  display: flex;
+  justify-content: center;
 }
 .formHeader {
   display: flex;

@@ -1,19 +1,22 @@
 <template>
-<section>
+  <section>
   <header class="formHeader"><h1>Agregar User</h1></header>
+  <div class="divForm">
   <form @submit.prevent="submitData">
+    
     <div>
       <label for="">Name</label>
-      <input type="text" v-model="enteredName" />
+      <input type="text" placeholder="Your name?" v-model="enteredName" />
     </div>
     <div>
       <label for="">Edad</label>
-      <input type="integer" v-model="enteredAge" />
+      <input type="integer" placeholder="Your Age?" v-model="enteredAge" />
     </div>
     <div>
     <button>Add User</button>
     </div>
   </form>
+  </div>
   </section>
 </template>
 
