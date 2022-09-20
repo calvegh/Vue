@@ -25,11 +25,11 @@
 
 <script>
 export default {
-  inject: ['addProductToCart'],
+  //inject: ['addProductToCart'],
   props: ['id', 'image', 'title', 'price', 'description'],
 
   methods: {
-    addToCart_2(payload){
+    addToCart_2(payload){ // This payload is okey
       this.$store.dispatch('addProductToCart',payload)
     },
     addToCart() {
