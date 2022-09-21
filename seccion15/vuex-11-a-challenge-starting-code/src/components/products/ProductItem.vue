@@ -13,33 +13,20 @@
       </div>
     </div>
     <div class="product__actions">
-      <button @click="addToCart_2({
-        id: this.id,
-        image: this.image,
-        title: this.title,
-        price: this.price,
-      })">Add to Cart</button>
+      <button @click="addToCart">Add to Cart</button>
     </div>
   </li>
 </template>
 
 <script>
 export default {
-  //inject: ['addProductToCart'],
   props: ['id', 'image', 'title', 'price', 'description'],
 
   methods: {
-    addToCart_2(payload){ // This payload is okey
-      this.$store.dispatch('addProductToCart',payload)
-    },
     addToCart() {
-      console.log(this.image)
-      this.addProductToCart({
-        id: this.id,
-        image: this.image,
-        title: this.title,
-        price: this.price,
-      });
+      this.$store.dispatch('cart/addToCart',{
+        id:this.id,
+      })
     },
   },
 };
