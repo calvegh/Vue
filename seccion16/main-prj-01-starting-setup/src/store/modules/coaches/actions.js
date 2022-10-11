@@ -8,8 +8,9 @@ export default {
       hourlyRate: data.rate,
       areas: data.areas,
     };
+    const token = context.rootGetters.token
     const response = await fetch(
-      `https://https-demo-vue-default-rtdb.firebaseio.com/coaches/${userId}.json`,
+      `https://https-demo-vue-default-rtdb.firebaseio.com/coaches/${userId}.json?auth=`+token,
       {
         method: 'PUT',
         body: JSON.stringify(coachData),
@@ -22,7 +23,10 @@ export default {
     }
     context.commit('registerCoach', { ...coachData, id: userId });
   },
-  async loadCoaches(context) {
+  async loadCoaches(context, payload) {
+    if(!payload.forceRefresh && !context.getters.shouldUpdate){
+      return
+    }
     const response = await fetch(
       `https://https-demo-vue-default-rtdb.firebaseio.com/coaches.json`
     );
@@ -44,5 +48,6 @@ export default {
       coaches.push(coach);
     }
     context.commit('setCoaches', coaches);
+    context.commit('setFetchTimestamp')
   },
 };
